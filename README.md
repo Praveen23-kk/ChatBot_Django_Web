@@ -1,30 +1,78 @@
-# 🧠 ChatBor – A Conversational AI Chatbot with Django & LLaMA 3.2:1B via Ollama
+# ChatBor 🧠
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/Django-4.2-green.svg)](https://www.djangoproject.com/)
-[![License](https://img.shields.io/github/license/yourusername/chatbor)](LICENSE)
-[![Ollama](https://img.shields.io/badge/Ollama-Enabled-orange)](https://ollama.com)
-[![LLaMA](https://img.shields.io/badge/LLaMA-3.2%3A1B-informational)](https://ollama.com/library)
-
-> ⚡ ChatBor is an intelligent chatbot web app built with Django and powered by the LLaMA 3.2:1B model served locally using [Ollama](https://ollama.com). Perfect for private, secure, and local AI interactions.
+A minimal Django chatbot powered by LLaMA 3.2:1B via [Ollama](https://ollama.com).  
+Runs locally, no cloud needed.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🌐 Web-based chatbot UI using Django
-- 🧠 AI responses powered by Meta's LLaMA 3.2:1B model via Ollama
-- 🔒 Runs entirely on your machine — no cloud, no tracking
-- 📡 REST API endpoint for easy frontend/backend integration
-- 🛠️ Easily extensible for other LLMs via Ollama
-
----
-
-## 📸 Demo
-
-![ChatBor Demo](https://your-demo-link-or-gif.gif)
+- Django-powered web chatbot
+- Uses LLaMA 3.2:1B model via Ollama
+- Local and private AI interactions
+- Simple API endpoint for chat
 
 ---
 
-## 📦 Project Structure
+## Setup
+
+1. **Clone and enter project:**
+
+```bash
+git clone https://github.com/yourusername/chatbor.git
+cd chatbor
+Create virtual environment:
+
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate
+Install requirements:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Install & run Ollama:
+
+bash
+Copy
+Edit
+curl -fsSL https://ollama.com/install.sh | sh
+ollama run llama3
+Run the app:
+
+bash
+Copy
+Edit
+python manage.py migrate
+python manage.py runserver
+Visit http://localhost:8000
+
+API
+POST /api/chat/
+
+json
+Copy
+Edit
+{ "message": "Hello" }
+Response:
+
+json
+Copy
+Edit
+{ "response": "Hi! How can I help you?" }
+License
+MIT © 2025
+
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you want this to include example UI screenshots or Docker support.
+
+
 
