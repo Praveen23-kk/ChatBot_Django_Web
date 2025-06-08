@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI ChatBot by Praveen</title>
+  <style>
+    :root {
+      --bg-color: #f0f2f5;
+      --chat-bg: #ffffff;
+      --header-bg: linear-gradient(to right, #8f94fb, #4e54c8);
+      --user-msg-bg: #dcf8c6;
+      --bot-msg-bg: #e6e6e6;
+      --text-color: #000;
+    }
+
+    [data-theme='dark'] {
+      --bg-color: #121212;
+      --chat-bg: #1e1e1e;
+      --header-bg: linear-gradient(to right, #333, #222);
+      --user-msg-bg: #2e7d32;
+      --bot-msg-bg: #333333;
+      --text-color: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .chat-container {
+      width: 90%;
+      max-width: 600px;
+      background-color: var(--chat-bg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 90vh;
+    }
+
+    .chat-header {
+      background: var(--header-bg);
+      color: white;
+      padding: 15px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: var(--bg-color);
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      background-color: var(--chat-bg);
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: var(--chat-bg);
+      color: var(--text-color);
+    }
+
+    .chat-input button {
+      background: #4e54c8;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .chat-input button:hover {
+      background: #3e42b1;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      max-width: 80%;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .user-message {
+      background-color: var(--user-msg-bg);
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .bot-message {
+      background-color: var(--bot-msg-bg);
+      align-self: flex-start;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      🤖 Praveen's AI ChatBot
+      <span class="theme-toggle" onclick="toggleTheme()">🌓</span>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    function toggleTheme() {
+      const current = localStorage.getItem('theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      setTheme(next);
+    }
+
+    (function () {
+      const saved = localStorage.getItem('theme') || 'light';
+      setTheme(saved);
+    })();
+
+    // CSRF token
+    function getCSRFToken() {
+      let csrfToken = null;
+      const cookies = document.cookie.split(';');
+      cookies.forEach(cookie => {
+        const [key, value] = cookie.trim().split('=');
+        if (key === 'csrftoken') csrfToken = value;
+      });
+      return csrfToken;
+    }
+
+    // Message logic
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (!message) return;
+
+      appendMessage("user", message);
+      input.value = "";
+
+      try {
+        const response = await fetch("/api/chat/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": getCSRFToken()
+          },
+          body: new URLSearchParams({ message })
+        });
+
+        const data = await response.json();
+        appendMessage("bot", data.response);
+      } catch (error) {
+        appendMessage("bot", "⚠️ Error: Unable to connect.");
+      }
+    }
+
+    function appendMessage(sender, text) {
+      const chatBox = document.getElementById("chat-messages");
+      const messageEl = document.createElement("div");
+      messageEl.classList.add("message", sender === "user" ? "user-message" : "bot-message");
+      messageEl.textContent = text;
+
+      const container = document.createElement("div");
+      container.classList.add("message-container");
+      container.appendChild(messageEl);
+      chatBox.appendChild(container);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    document.getElementById("user-input").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+</body>
+</html>
