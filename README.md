@@ -1,78 +1,32 @@
-# ChatBor 🧠
+<h1 align="center">🤖 ChatBor</h1>
 
-A minimal Django chatbot powered by LLaMA 3.2:1B via [Ollama](https://ollama.com).  
-Runs locally, no cloud needed.
+<p align="center">
+  A minimal Django chatbot powered by <strong>LLaMA 3.2:1B</strong> via <a href="https://ollama.com" target="_blank"><strong>Ollama</strong></a>.  
+  <br>Runs 100% locally for private, fast, and secure AI interactions.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Django-4.x-green.svg" />
+  <img src="https://img.shields.io/badge/Ollama-Local%20LLMs-blueviolet" />
+  <img src="https://img.shields.io/badge/LLaMA-3.2%3A1B-informational" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+</p>
 
 ---
 
-## Features
+## ✨ Features
 
-- Django-powered web chatbot
-- Uses LLaMA 3.2:1B model via Ollama
-- Local and private AI interactions
-- Simple API endpoint for chat
+- 🧠 Conversational AI with LLaMA 3.2:1B
+- ⚙️ Built using Django (Python)
+- 🛡️ Fully offline – no API keys or cloud
+- 🧩 REST API endpoint for integration
 
 ---
 
-## Setup
+## 🚀 Quick Start
 
-1. **Clone and enter project:**
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/yourusername/chatbor.git
 cd chatbor
-Create virtual environment:
-
-bash
-Copy
-Edit
-python -m venv venv
-source venv/bin/activate
-Install requirements:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Install & run Ollama:
-
-bash
-Copy
-Edit
-curl -fsSL https://ollama.com/install.sh | sh
-ollama run llama3
-Run the app:
-
-bash
-Copy
-Edit
-python manage.py migrate
-python manage.py runserver
-Visit http://localhost:8000
-
-API
-POST /api/chat/
-
-json
-Copy
-Edit
-{ "message": "Hello" }
-Response:
-
-json
-Copy
-Edit
-{ "response": "Hi! How can I help you?" }
-License
-MIT © 2025
-
-yaml
-Copy
-Edit
-
----
-
-Let me know if you want this to include example UI screenshots or Docker support.
-
-
-
