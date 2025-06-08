@@ -22,7 +22,6 @@
 - 🧩 REST API endpoint for integration
 
 ---
-
 ## 🚀 Quick Start
 
 ### 1. Clone the Repository
@@ -30,3 +29,9 @@
 ```bash
 git clone https://github.com/yourusername/chatbor.git
 cd chatbor
+
+Create and Activate a Virtual Environment
+python -m venv venv
+source venv/bin/activate    # On Windows: venv\Scripts\activate
+
+Install Python Dependencies
