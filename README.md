@@ -7,9 +7,9 @@
 
 A simple yet powerful web-based chatbot application built with the Django framework and the ChatterBot library. This project provides a clean user interface for real-time conversations with a trainable AI bot.
 
-> **Note:** You can replace the image/GIF link below with your own screenshot or a more detailed GIF of the application in action!
->
-> ![ChatBot Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaG1iY2Rzcnl0bXBjZzBqM2tycnJmcHh0dzJ2M3M2MW9pMHRud21rdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lI4bY2A21T33vG/giphy.gif)
+> **Note:** You can replace the GIF below with a screenshot or your own GIF of the application in action!
+
+![ChatBot Demo GIF](https://media.giphy.com/media/oBKEnTAQnh2Bq/giphy.gif)
 
 ## ✨ Features
 
@@ -63,7 +63,7 @@ Make sure you have the following installed on your system:
     ```
 
 4.  **Train the ChatterBot corpus:**
-    This is a crucial step to make your bot knowledgeable. ChatterBot comes with pre-built corpuses you can train it on.
+    This is a crucial step to make your bot knowledgeable. This command trains the bot on an English corpus.
     ```sh
     python manage.py train
     ```
@@ -81,6 +81,7 @@ Make sure you have the following installed on your system:
 7.  **Open your browser** and navigate to `http://127.0.0.1:8000/`. You should now be able to chat with your bot!
 
 ## 📂 Project Structure
+
 
 Here is an overview of the key files in the project:
 ChatBot_Django_Web/
