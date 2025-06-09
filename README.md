@@ -9,7 +9,7 @@ A simple yet powerful web-based chatbot application built with the Django framew
 
 > **Note:** You can replace the GIF below with a screenshot or your own GIF of the application in action!
 
-![ChatBot Demo GIF](https://media.giphy.com/media/oBKEnTAQnh2Bq/giphy.gif)
+![ChatBot Demo GIF](https://iconscout.com/lottie-animation/chatbot-12057443_9850607)
 
 ## ✨ Features
 
