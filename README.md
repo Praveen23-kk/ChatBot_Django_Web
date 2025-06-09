@@ -80,24 +80,6 @@ Make sure you have the following installed on your system:
 
 7.  **Open your browser** and navigate to `http://127.0.0.1:8000/`. You should now be able to chat with your bot!
 
-## 📂 Project Structure
-
-Here is an overview of the key files in the project:
-ChatBot_Django_Web/
-├── Chatbot_Project/ # Main Django project settings
-│ ├── settings.py
-│ └── urls.py
-├── chatbot/ # The core chatbot Django app
-│ ├── admin.py
-│ ├── apps.py
-│ ├── views.py # Contains the logic for handling chat requests
-│ └── urls.py
-├── static/ # CSS, JS, and image files
-├── templates/ # HTML templates
-│ └── index.html
-├── manage.py # Django's command-line utility
-└── requirements.txt # List of Python dependencies
-
 
 ## 🤝 Contributing
 
