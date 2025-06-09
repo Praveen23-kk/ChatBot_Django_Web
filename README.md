@@ -10,6 +10,7 @@ A simple yet powerful web-based chatbot application built with the Django framew
 > **Note:** You can replace the GIF below with a screenshot or your own GIF of the application in action!
 
 ![ChatBot Demo](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY25sMjVzenNpbGYzcHR3Z3BqbnB5NjZtNmVsbGdodmJmcHphM2VsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/A608loAlQnh2Bq7k4m/giphy.gif)
+
 ## ✨ Features
 
 - **Interactive Chat Interface**: A clean and simple UI for seamless conversation.
@@ -80,7 +81,6 @@ Make sure you have the following installed on your system:
 7.  **Open your browser** and navigate to `http://127.0.0.1:8000/`. You should now be able to chat with your bot!
 
 ## 📂 Project Structure
-
 
 Here is an overview of the key files in the project:
 ChatBot_Django_Web/
